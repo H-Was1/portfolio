@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .main-grid {
+    display: grid;
+    grid-template-rows: 100vh auto;
+    grid-template-areas: "hero";
+  }
+  .grid-hero {
+    grid-area: hero;
+  }
+  /* -----        static grid -                                     */
+  .section-grid {
+    display: grid;
+    grid-template-rows: auto 100vh; /*change it into 70vh 100dvh */
+    grid-template-areas:
+      "static"
+      "footer";
+  }
+  .grid-footer {
+    grid-area: footer;
+  }
+  .grid-static {
+    grid-area: static;
+  }
+  /* -----        middle grid -                                     */
+  .middle-grid {
+    display: grid;
+    grid-template-rows: 80vh auto minmax(80vh, auto) 140vh;
+    grid-template-areas:
+      "about"
+      "skills"
+      "projects"
+      "catch";
+  }
+  @media (max-width: 768px) {
+    .middle-grid {
+      display: grid;
+      grid-template-rows: 80vh auto minmax(80vh, auto) !important;
+      grid-template-areas:
+        "about"
+        "skills"
+        "projects" !important;
+    }
+  }
+  .grid-about {
+    grid-area: about;
+  }
+  .grid-skills {
+    grid-area: skills;
+  }
+  .grid-projects {
+    grid-area: projects;
+  }
+  .grid-catch {
+    grid-area: catch;
+  }
+  /* -----                                deepgrid grid                                                            */
+
+  .skill {
+    grid-area: skill;
+    overflow: hidden;
+  }
+  .frontend {
+    grid-area: frontend;
+  }
+  .backend {
+    grid-area: backend;
+  }
+  .cloud {
+    grid-area: cloud;
+  }
+  .web-scraping {
+    grid-area: web-scraping;
+  }
+  .Miscellaneous {
+    grid-area: Miscellaneous;
+  }
+  .deep-gridm {
+    display: grid;
+    grid-template-rows: 20vh repeat(5, 40vh);
+    grid-template-areas:
+      "skill"
+      "frontend"
+      "backend"
+      "cloud"
+      "web-scraping"
+      "Miscellaneous";
+  }
+  .deep-gridd {
+    display: grid;
+    grid-template-rows: 20vh repeat(2, 1fr) !important;
+    grid-template-columns: repeat(8, 1fr) !important;
+    grid-template-areas:
+      "skill skill skill skill skill skill skill skill "
+      "frontend frontend frontend frontend backend backend backend backend"
+      "cloud cloud cloud web-scraping web-scraping Miscellaneous Miscellaneous Miscellaneous" !important;
+  }
+}
