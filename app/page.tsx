@@ -2,9 +2,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { motion, useAnimation, useInView, stagger } from "framer-motion";
+import {
+  AnimationControls,
+  motion,
+  useAnimation,
+  useInView,
+} from "framer-motion";
 import { ReactLenis } from "@studio-freight/react-lenis";
-import { links, name, overview, pronouns, sections } from "@/constant";
+import { name, overview, pronouns, sections } from "@/constant";
 import { Marque } from "@/components/Marque";
 import { LinkTree } from "@/components/LinkTree";
 import SkillComponent from "@/components/SkillComponent";
@@ -19,7 +24,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setisOpen(true);
-    }, 2500);
+    }, 1500);
     return () => clearTimeout(timer);
   }, [isOpen]);
 
@@ -27,12 +32,18 @@ export default function Home() {
   const ref = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
+  // const ref4 = useRef(null);
 
   const controls1 = useAnimation();
   const controls2 = useAnimation();
   const controls3 = useAnimation();
+  // const controls4 = useAnimation();
 
-  const useInViewAnimation = (ref: any, margin: string, controls: any) => {
+  const useInViewAnimation = (
+    ref: any,
+    margin: string,
+    controls: AnimationControls
+  ) => {
     const inView = useInView(ref, { margin });
     useEffect(() => {
       if (inView) {
@@ -46,10 +57,11 @@ export default function Home() {
   };
   useInViewAnimation(ref, "-200px", controls1);
   useInViewAnimation(ref2, "-250px", controls2);
-  useInViewAnimation(ref3, "-260px", controls3);
+  useInViewAnimation(ref3, "-350px", controls3);
+  // useInViewAnimation(ref4, "-350px", controls4);
 
   return (
-    <ReactLenis root options={{ duration: 2 }}>
+    <ReactLenis root options={{ duration: 2.5 }}>
       <div
         data-state={isOpen ? "open" : "closed"}
         className="w-screen h-screen flex justify-center items-center fixed data-[state=open]:hidden bg-black/90 backdrop-blur-3xl z-50"
@@ -146,31 +158,28 @@ export default function Home() {
             <div className="middle-grid">
               <div
                 id="about"
-                className="px-6 overflow-hidden h-full rounded-t-xl items-center justify-center py-4 flex flex-wrap bg-black gap-6 text-white w-full"
+                ref={ref3}
+                className="overflow-hidden h-full rounded-t-xl items-center justify-center py-4 flex flex-wrap bg-black gap-6 text-white w-full"
               >
-                <motion.ol
-                  className="max-lg:text-5xl lg:text-7xl sticky font-bold flex"
-                  animate={controls3}
-                  variants={{
-                    visible: { opacity: 1 },
-                    hidden: { opacity: 0 },
-                  }}
-                >
+                <ol className="text-6xl sm:text-8xl  font-bold flex">
                   {"About".split("").map((el, i) => (
                     <motion.li
-                      ref={ref3}
                       key={i}
                       initial={{ translateY: 40, opacity: 0 }}
-                      animate={{ translateY: 0, opacity: 1 }}
+                      animate={controls3}
+                      variants={{
+                        visible: { translateY: 0, opacity: 1 },
+                        hidden: { translateY: 40, opacity: 0 },
+                      }}
                       transition={{
-                        // delay: stagger,
+                        delay: 0.1 * i,
                         type: "spring",
                       }}
                     >
                       {el}
                     </motion.li>
                   ))}
-                </motion.ol>
+                </ol>
                 <motion.p
                   ref={ref2}
                   initial={{ opacity: 0, translateX: 200 }}
@@ -180,7 +189,7 @@ export default function Home() {
                     hidden: { opacity: 0, translateX: 200 },
                   }}
                   transition={{ duration: 2.6, type: "spring" }}
-                  className="px-4 text-3xl max-sm:text-xl md:leading-10 md:tracking-widest md:max-w-[60vw] font-medium"
+                  className="px-3 max-md:text-4xl sm:text-3xl max-sm:text-xl lg:leading-[3.5rem] tracking-widest md:max-w-[60vw]"
                 >
                   {name}
                   <span className="text-xl font-thin">{pronouns}</span>

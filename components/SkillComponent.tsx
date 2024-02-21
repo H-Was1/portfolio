@@ -1,17 +1,18 @@
 import { SkillsMarque } from "./Marque";
 import { bskill, cskill, fskill, mskill, wskill } from "@/constant";
 import { Tooltip } from "@nextui-org/tooltip";
+import { motion } from "framer-motion";
 import localFont from "next/font/local";
 
 import Image from "next/image";
 const myFont2 = localFont({
-  src: "../app/fonts/ProtestRevolution-Regular.ttf",
+  src: "../app/fonts/Anta-Regular.ttf",
   display: "swap",
 });
 function SkillComponent() {
   return (
     <div
-      className="lg:deep-gridd deep-gridm grid-skills gap-4 h-[100vh] max-lg:h-[236vh] py-4 px-6 duration-1000 bg-gradient-to-bl from-violet-800/60 from-10% via-indigo-900/70 via-40% to-violet-700/80 to-95% relative overflow-hidden text-white max-md:border-b max-md:shadow-xl max-md:shadow-indigo-700/70 max-md:border-slate-500/80 max-md:rounded-b-2xl"
+      className="lg:deep-gridd deep-gridm grid-skills gap-4 h-[100vh] max-lg:h-[236vh] py-4 px-3 duration-1000 bg-gradient-to-bl from-violet-800/60 from-10% via-indigo-900/70 via-40% to-violet-700/80 to-95% relative overflow-hidden text-white "
       id="skills"
     >
       <div className="absolute backdrop-blur-2xl w-screen h-[120vh] max-xl:h-[270vh] h bg-grid bg-cover bg-opacity-20"></div>
@@ -27,31 +28,13 @@ function SkillComponent() {
           ></Image>
         </div>
         <div className="relative -left-4 -top-3 flex">
-          <div className="h-[3.4rem] w-[10rem] border border-gray-800/30 rounded-xl bg-gradient-to-r from-cyan-700 to-blue-700 skew-x-[-20deg] absolute"></div>
+          <div className="h-[3.4rem] w-[10.6rem] border border-gray-800/30 rounded-xl bg-gradient-to-r from-cyan-700 to-blue-700 skew-x-[-20deg] absolute"></div>
           <Badge Children={"FrontEnd"} />
         </div>
         <div className="w-full h-full flex items-center justify-center bg-grid">
           <div className="flex flex-wrap justify-around gap-6 items-center px-3">
             {fskill.map((skill) => {
-              return (
-                <Tooltip
-                  key={skill.name}
-                  content={skill.description}
-                  className="p-3 bg-black/30 backdrop-blur-lg w-80 border border-black/20 shadow-md rounded-xl text-white"
-                >
-                  <div>
-                    <div>
-                      <Image
-                        src={skill.url}
-                        width={skill.width}
-                        height={20}
-                        alt={skill.name}
-                        className="select-none"
-                      ></Image>
-                    </div>
-                  </div>
-                </Tooltip>
-              );
+              return <Skill skill={skill} key={skill.url} />;
             })}
           </div>
         </div>
@@ -73,25 +56,7 @@ function SkillComponent() {
         <div className="w-full h-full flex items-center justify-center">
           <div className="flex flex-wrap justify-center gap-6 items-center px-3">
             {bskill.map((skill) => {
-              return (
-                <Tooltip
-                  key={skill.name}
-                  content={skill.description}
-                  className="p-3 bg-black/30 backdrop-blur-lg w-80 border border-black/20 shadow-md rounded-xl text-white"
-                >
-                  <div>
-                    <div>
-                      <Image
-                        src={skill.url}
-                        width={skill.width}
-                        height={20}
-                        alt={skill.name}
-                        className="select-none"
-                      ></Image>
-                    </div>
-                  </div>
-                </Tooltip>
-              );
+              return <Skill skill={skill} key={skill.url} />;
             })}
           </div>
         </div>
@@ -113,25 +78,7 @@ function SkillComponent() {
         <div className="w-full h-full flex items-center justify-center">
           <div className="flex flex-wrap justify-center gap-6 items-center px-3">
             {cskill.map((skill) => {
-              return (
-                <Tooltip
-                  key={skill.name}
-                  content={skill.description}
-                  className="p-3 bg-black/30 backdrop-blur-lg w-80 border border-black/20 shadow-md rounded-xl text-white"
-                >
-                  <div>
-                    <div>
-                      <Image
-                        src={skill.url}
-                        width={skill.width}
-                        height={20}
-                        alt={skill.name}
-                        className="select-none"
-                      ></Image>
-                    </div>
-                  </div>
-                </Tooltip>
-              );
+              return <Skill skill={skill} key={skill.url} />;
             })}
           </div>
         </div>
@@ -147,31 +94,13 @@ function SkillComponent() {
           ></Image>
         </div>
         <div className="relative -left-4 -top-3 flex">
-          <div className="h-[3.4rem] w-[12.7rem] border border-gray-800/30 rounded-xl bg-gradient-to-r from-cyan-700 to-blue-700 skew-x-[-20deg] absolute"></div>
+          <div className="h-[3.4rem] w-[13.7rem] border border-gray-800/30 rounded-xl bg-gradient-to-r from-cyan-700 to-blue-700 skew-x-[-20deg] absolute"></div>
           <Badge Children={"Web Scraping"} />
         </div>
         <div className="w-full h-full flex items-center justify-center bg-grid">
           <div className="flex flex-wrap justify-center gap-6 items-center px-3">
             {wskill.map((skill) => {
-              return (
-                <Tooltip
-                  key={skill.name}
-                  content={skill.description}
-                  className="p-3 bg-black/30 backdrop-blur-lg w-80 border border-black/20 shadow-md rounded-xl text-white"
-                >
-                  <div>
-                    <div>
-                      <Image
-                        src={skill.url}
-                        width={skill.width}
-                        height={20}
-                        alt={skill.name}
-                        className="select-none"
-                      ></Image>
-                    </div>
-                  </div>
-                </Tooltip>
-              );
+              return <Skill skill={skill} key={skill.url} />;
             })}
           </div>
         </div>
@@ -187,31 +116,13 @@ function SkillComponent() {
           ></Image>
         </div>
         <div className="relative -left-4 -top-3 flex">
-          <div className="h-[3.4rem] w-[13.2rem] border border-gray-800/30 rounded-xl bg-gradient-to-r from-cyan-700 to-blue-700 skew-x-[-20deg] absolute"></div>
+          <div className="h-[3.4rem] w-[13.9rem] border border-gray-800/30 rounded-xl bg-gradient-to-r from-cyan-700 to-blue-700 skew-x-[-20deg] absolute"></div>
           <Badge Children={"Miscellaneous"} />
         </div>
         <div className="w-full h-full flex items-center justify-center bg-grid">
           <div className="flex flex-wrap justify-center gap-6 items-center px-3">
             {mskill.map((skill, i) => {
-              return (
-                <Tooltip
-                  key={i}
-                  content={skill.description}
-                  className="p-3 bg-black/30 backdrop-blur-lg w-80 border border-black/20 shadow-md rounded-xl text-white"
-                >
-                  <div key={i}>
-                    <div>
-                      <Image
-                        src={skill.url}
-                        width={skill.width}
-                        height={20}
-                        alt={skill.name}
-                        className="select-none"
-                      ></Image>
-                    </div>
-                  </div>
-                </Tooltip>
-              );
+              return <Skill skill={skill} key={skill.url} />;
             })}
           </div>
         </div>
@@ -228,5 +139,31 @@ function Badge({ Children }: { Children: string }) {
     >
       {Children}
     </h1>
+  );
+}
+
+function Skill({
+  skill,
+}: {
+  skill: { name: string; description: string; url: string; width: number };
+}) {
+  return (
+    <Tooltip
+      key={skill.name}
+      content={skill.description}
+      className="p-3 bg-black/30 backdrop-blur-lg select-none w-80 border border-black/20 shadow-md rounded-xl text-white"
+    >
+      <div>
+        <div>
+          <Image
+            src={skill.url}
+            width={skill.width}
+            height={20}
+            alt={skill.name}
+            className="select-none"
+          ></Image>
+        </div>
+      </div>
+    </Tooltip>
   );
 }

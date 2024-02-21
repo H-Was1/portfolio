@@ -38,7 +38,7 @@
   @media (max-width: 768px) {
     .middle-grid {
       display: grid;
-      grid-template-rows: 80vh auto minmax(80vh, auto) !important;
+      grid-template-rows: 80vh auto minmax(100vh, auto) !important;
       grid-template-areas:
         "about"
         "skills"

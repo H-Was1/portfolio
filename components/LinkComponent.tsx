@@ -15,7 +15,7 @@ export function LinkComponent({
   containerStyles: string;
   childStyles: string;
 }) {
-  const [isHover, setIsHover] = useState("false");
+  const [isHovering, setIsHovering] = useState("false");
 
   return link.name === "Resume / CV" ? (
     <Tooltip
@@ -25,15 +25,18 @@ export function LinkComponent({
       <Link
         onClick={() => redirect(link.url)}
         href={link.url}
-        onMouseEnter={() => setIsHover("true")}
-        onMouseLeave={() => setIsHover("false")}
+        onMouseEnter={() => setIsHovering("true")}
+        onMouseLeave={() => setIsHovering("false")}
         className={`hover:text-white ${containerStyles}`}
       >
         <div className="relative z-10 overflow-hidden">
           <motion.span
             initial={{ translateY: 5 }}
-            animate={isHover}
-            variants={{ true: { height: childStyles, translateY: 0 } }}
+            animate={isHovering}
+            variants={{
+              true: { height: childStyles, translateY: 0 },
+              false: { height: 0, translateY: 5 },
+            }}
             // transition={}
             className={`absolute top-0 bg-black w-full ${childStyles} -z-10 rounded-xl`}
           ></motion.span>
@@ -48,17 +51,17 @@ export function LinkComponent({
     <Link
       href={link.url}
       target="_blank"
-      onMouseEnter={() => setIsHover("true")}
-      onMouseLeave={() => setIsHover("false")}
+      onMouseEnter={() => setIsHovering("true")}
+      onMouseLeave={() => setIsHovering("false")}
+      onTouchStart={() => setIsHovering("false")}
       className={`hover:text-white ${containerStyles}`}
     >
       <div className="relative z-10 overflow-hidden">
         <motion.span
           initial={{ translateY: 5 }}
-          animate={isHover}
+          animate={isHovering}
           variants={{ true: { height: childStyles, translateY: 0 } }}
-          // transition={}
-          className={`absolute top-0 bg-black w-full ${childStyles} -z-10 rounded-xl`}
+          className={`absolute top-0 bg-black w-full ${childStyles} sm:hidden -z-10 rounded-xl`}
         ></motion.span>
         <div className="flex relative max-md:text-sm justify-between border border-black gap-3 px-3 py-4 rounded-xl hover:px-8 transition-all duration-700">
           <span>{link.name}</span>

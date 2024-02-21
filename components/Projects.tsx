@@ -1,5 +1,10 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  AnimationControls,
+  motion,
+  useAnimation,
+  useInView,
+} from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -34,15 +39,66 @@ interface Props {
 }
 
 function Projects() {
+  const ref = useRef(null);
+  const controls1 = useAnimation();
+  const useInViewAnimation = (
+    ref: any,
+    margin: string,
+    controls: AnimationControls
+  ) => {
+    const inView = useInView(ref, { margin });
+    useEffect(() => {
+      if (inView) {
+        controls.start("visible");
+      } else {
+        controls.start("hidden");
+      }
+      console.log(inView);
+    }, [controls, inView]);
+    return [controls];
+  };
+  useInViewAnimation(ref, "-40px", controls1);
   return (
     <div
-      className="grid-projects relative bg-slate-50 px-6 max-md:shadow-lg border-b border-b-black"
+      className="grid-projects relative bg-slate-50 px-3 max-md:shadow-lg border-b border-b-black"
       id="projects"
     >
-      <div className="sticky h-[21vh] top-0 border-b border-black">
+      <div className="sticky h-[21vh] top-0 border-b border-black" ref={ref}>
         <div className="bg-slate-50 flex justify-start gap-4 sm:text-7xl text-5xl font-bold items-center h-full">
-          <span>⤵</span>
-          <h1 className="">Projects</h1>
+          <motion.span
+            initial={{ translateY: -40, opacity: 0 }}
+            animate={controls1}
+            variants={{
+              visible: { translateY: 0, opacity: 1 },
+              hidden: { translateY: -40, opacity: 0 },
+            }}
+            transition={{
+              delay: 0.1,
+              type: "spring",
+            }}
+          >
+            ⤵
+          </motion.span>
+          <motion.ul className="flex justify-center items-center">
+            {"Projects".split("").map((e, i) => (
+              <motion.li
+                key={i}
+                initial={{ translateY: 40, opacity: 0 }}
+                animate={controls1}
+                variants={{
+                  visible: { translateY: 0, opacity: 1 },
+                  hidden: { translateY: 40, opacity: 0 },
+                }}
+                transition={{
+                  duration: 1,
+                  delay: 0.1 * i,
+                  type: "spring",
+                }}
+              >
+                {e}
+              </motion.li>
+            ))}
+          </motion.ul>
         </div>
       </div>
       <div className="projects-container py-6">
@@ -57,7 +113,17 @@ function Projects() {
             previewUrl={project.previewUrl}
           />
         ))}
+        <MobileProject />
       </div>
+    </div>
+  );
+}
+
+function MobileProject() {
+  return (
+    <div className="2xl:hidden border-b border-black h-screen py-3 flex flex-col gap-5">
+      <h1 className="text-4xl">Js for Webflow</h1>
+      <div className="h-[85vh] bg-purple-500 rounded-xl"></div>
     </div>
   );
 }
