@@ -1,7 +1,10 @@
 export const links = [
-  { url: "", name: "LinkedIn" },
-  { url: "https://twitter.com/h-wasi", name: "Email" },
-  { url: "https://github.com/h-wasi", name: "Github" },
+  {
+    url: "https://www.linkedin.com/in/hammad-wasi-17a3b12b6/",
+    name: "LinkedIn",
+  },
+  { url: "mailto:hammadwasi.b@gmail.com", name: "Email" },
+  { url: "https://github.com/H-Was1", name: "Github" },
   { url: "/resume.pdf", name: "Resume / CV" },
 ];
 export const email = "h-wasi@gmail.com";
