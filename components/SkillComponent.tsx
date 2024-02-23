@@ -12,7 +12,7 @@ const myFont2 = localFont({
 function SkillComponent() {
   return (
     <div
-      className="lg:deep-gridd deep-gridm grid-skills gap-4 h-[100vh] max-lg:h-[236vh] py-4 px-3 duration-1000 bg-gradient-to-bl from-violet-800/60 from-10% via-indigo-900/70 via-40% to-violet-700/80 to-95% relative overflow-hidden text-white "
+      className="lg:deep-gridd deep-gridm grid-skills gap-4 h-[100vh] max-lg:h-[236vh] py-4 px-3 duration-1000 bg-gradient-to-bl from-violet-800/60 from-10% via-indigo-900/70 via-40% to-violet-700/60 to-95% relative overflow-hidden text-white "
       id="skills"
     >
       <div className="absolute backdrop-blur-2xl w-screen h-[120vh] max-xl:h-[270vh] h bg-grid bg-cover bg-opacity-20"></div>
