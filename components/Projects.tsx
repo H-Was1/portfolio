@@ -67,7 +67,9 @@ function Project({
         <p className="max-xl:hidden">{description}</p>
       </div>
       <div
-        className="absolute bottom-4 z-[1] data-[state=closed]:hidden w-full h-[16rem] grid grid-cols-8"
+        className={`absolute ${
+          id === "1" || id === "2" ? "-top-28" : "bottom-4"
+        } z-[1] data-[state=closed]:hidden w-full h-[16rem] grid grid-cols-8`}
         data-state={isOpen === id ? "open" : "closed"}
       >
         <span className="w-[18rem] bg-pink-500 h-full rounded-xl col-start-5 col-end-6 max-3xl:col-start-4 max-3xl:col-end-5"></span>
