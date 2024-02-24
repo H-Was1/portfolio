@@ -1,7 +1,7 @@
 import { SkillsMarque } from "./Marque";
 import { bskill, cskill, fskill, mskill, wskill } from "@/constant";
 import { Tooltip } from "@nextui-org/tooltip";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import localFont from "next/font/local";
 
 import Image from "next/image";
@@ -10,14 +10,21 @@ const myFont2 = localFont({
   display: "swap",
 });
 function SkillComponent() {
+  // Transform scroll progress to width percentage
+  const { scrollYProgress } = useScroll();
+  const width = useTransform(scrollYProgress, [0, 0.34], ["0px", "100%"]);
+  // ------------------------
   return (
     <div
-      className="lg:deep-gridd deep-gridm grid-skills gap-4 h-[100vh] max-lg:h-[236vh] py-4 px-3 duration-1000 bg-gradient-to-bl from-violet-800/60 from-10% via-indigo-900/70 via-40% to-violet-700/60 to-95% relative overflow-hidden text-white "
+      className="lg:deep-gridd deep-gridm grid-skills gap-4 h-[100vh] max-lg:h-[236vh] py-4 px-3 duration-1000 bg-gradient-to-bl from-violet-800/60 from-10% via-indigo-900/70 via-40% to-violet-700/60 to-95% relative overflow-hidden text-white"
       id="skills"
     >
-      <div className="absolute backdrop-blur-2xl w-screen h-[120vh] max-xl:h-[270vh] h bg-grid bg-cover bg-opacity-20"></div>
+      <div className="absolute backdrop-blur-2xl w-screen h-[120vh] max-xl:h-[270vh] h bg-grid bg-cover bg-opacity-20 items-start"></div>
       <SkillsMarque />
-      <div className="border frontend border-slate-600/10 shadow-lg shadow-black/20 ring-1 ring-black/15 bg-black/20 backdrop-blur-xl  rounded-xl relative z-20 overflow-hidden">
+      <motion.div
+        style={{ width: width }}
+        className="border frontend border-slate-600/10 shadow-lg left-0 shadow-black/20 ring-1 ring-black/15 bg-black/20 backdrop-blur-xl rounded-xl relative z-20 overflow-hidden"
+      >
         <div className="absolute -right-28 -z-10 blur-[8px] -bottom-11">
           <Image
             src={"/frontend.svg"}
@@ -38,8 +45,11 @@ function SkillComponent() {
             })}
           </div>
         </div>
-      </div>
-      <div className="backend border border-slate-600/10 shadow-lg shadow-black/20 ring-1 ring-black/15 bg-black/20 backdrop-blur-xl rounded-xl relative z-20 bg-grid overflow-hidden">
+      </motion.div>
+      <motion.div
+        style={{ width: width }}
+        className="backend border border-slate-600/10 shadow-lg left-0 shadow-black/20 ring-1 ring-black/15 bg-black/20 backdrop-blur-xl rounded-xl relative z-20 bg-grid overflow-hidden"
+      >
         <div className="absolute -right-28 -z-10 blur-[8px] -bottom-11">
           <Image
             src={"/backend.svg"}
@@ -60,8 +70,11 @@ function SkillComponent() {
             })}
           </div>
         </div>
-      </div>
-      <div className="cloud border border-slate-600/10 shadow-lg shadow-black/20 ring-1 ring-black/15 bg-black/20 backdrop-blur-xl rounded-xl relative z-10 bg-grid overflow-hidden">
+      </motion.div>
+      <motion.div
+        style={{ width: width }}
+        className="cloud border border-slate-600/10 shadow-lg left-0 shadow-black/20 ring-1 ring-black/15 bg-black/20 backdrop-blur-xl rounded-xl relative z-10 bg-grid overflow-hidden"
+      >
         <div className="absolute -right-12 -z-10 blur-[8px] -bottom-10">
           <Image
             src={"/cloud.svg"}
@@ -82,8 +95,11 @@ function SkillComponent() {
             })}
           </div>
         </div>
-      </div>
-      <div className="web-scraping border border-slate-600/10 shadow-lg shadow-black/20 ring-1 ring-black/15 bg-black/20 backdrop-blur-xl rounded-xl relative z-10 overflow-hidden">
+      </motion.div>
+      <motion.div
+        style={{ width: width }}
+        className="web-scraping border border-slate-600/10 shadow-lg left-0 shadow-black/20 ring-1 ring-black/15 bg-black/20 backdrop-blur-xl rounded-xl relative z-10 overflow-hidden"
+      >
         <div className="absolute -right-10 -z-10 blur-[8px] -bottom-16">
           <Image
             src={"/data.svg"}
@@ -104,8 +120,11 @@ function SkillComponent() {
             })}
           </div>
         </div>
-      </div>
-      <div className="Miscellaneous border border-slate-600/10 shadow-lg shadow-black/20 ring-1 ring-black/15 bg-black/20 backdrop-blur-xl rounded-xl relative z-10 overflow-hidden">
+      </motion.div>
+      <motion.div
+        style={{ width: width }}
+        className="Miscellaneous border border-slate-600/10 shadow-lg left-0 shadow-black/20 ring-1 ring-black/15 bg-black/20 backdrop-blur-xl rounded-xl relative z-10 overflow-hidden"
+      >
         <div className="absolute -right-20 -z-10 blur-[8px] -bottom-11">
           <Image
             src={"/miscellaneous.svg"}
@@ -126,7 +145,7 @@ function SkillComponent() {
             })}
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

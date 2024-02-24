@@ -69,10 +69,10 @@ function Project({
       <div
         className={`absolute ${
           id === "1" || id === "2" ? "-top-28" : "bottom-4"
-        } z-[1] data-[state=closed]:hidden w-full h-[16rem] grid grid-cols-8`}
+        } z-[1] data-[state=closed]:hidden w-full h-[16rem] grid grid-cols-12`}
         data-state={isOpen === id ? "open" : "closed"}
       >
-        <span className="w-[18rem] bg-pink-500 h-full rounded-xl col-start-5 col-end-6 max-3xl:col-start-4 max-3xl:col-end-5"></span>
+        <span className="w-[18rem] bg-slate-300/20 backdrop-blur-lg h-full rounded-xl 3xl:col-start-6 3xl:col-end-7 col-start-5 col-end-6"></span>
       </div>
       <Link
         target="_blank"
@@ -108,7 +108,7 @@ function Projects() {
   return (
     <>
       <div
-        className="grid-projects relative bg-slate-50 px-3 max-md:shadow-lg border-b border-b-black"
+        className="grid-projects relative bg-slate-50 px-3 max-md:shadow-xl border-b border-b-black/40"
         id="projects"
       >
         <div
@@ -141,8 +141,8 @@ function Projects() {
                     hidden: { translateY: 40, opacity: 0 },
                   }}
                   transition={{
-                    duration: 1,
-                    delay: 0.1 * i,
+                    duration: 0.4,
+                    delay: 0.058 * i,
                     type: "spring",
                   }}
                 >
@@ -152,36 +152,36 @@ function Projects() {
             </motion.ul>
           </div>
         </div>
-        <div className="flex gap-28 w-full h-[20rem] pt-8 pb-3">
-          <div className="flex flex-col gap-7">
+        <div className="flex gap-28 w-full h-[20rem] pt-6 pb-3 max-md:hidden">
+          <div className="flex flex-col gap-5">
             <h1>TIMEFRAME</h1>
-            <span className="font-bold  text-sm">YEAR 2023-24</span>
+            <div className="flex gap-1.5 items-center justify-center flex-wrap  font-bold text-sm">
+              <span>YEAR</span>
+              <span>2023-24</span>
+            </div>
           </div>
-          <div className="flex flex-col gap-7">
+          <div className="flex flex-col gap-5">
             <h1>DISCIPLINE</h1>
-            <div className="flex flex-col gap-4 font-semibold text-sm">
+            <div className="flex flex-col gap-1.5 font-semibold text-sm">
               <span>Full Stack Development</span>
-              <span>Data Scraping and Automation</span>
-              <span>Performance Optimization & Scalability</span>
-              <span>Containerization & Orchestration</span>
-              <span>Continuous Learning and Adaptability</span>
+              <span>Data Scraping</span>
+              <span>Optimization & Scalability</span>
+              <span>Containerization</span>
             </div>
           </div>
-          <div className="flex flex-col gap-7">
-            <h1>TECH-STACK</h1>
-            <div className="flex flex-col gap-2 font-semibold text-sm">
-              <span>Next.js / React</span>
-              <span>TailwindCSS / Framer</span>
-              <span>Node.js / Express</span>
-              <span>MongoDB / PostgreSQL</span>
-              <span>Docker / Kubernetes</span>
-              <span>NextAuth / Clerk</span>
-              <span>BrightData / Framer</span>
+          <div className="flex flex-col gap-5">
+            <h1>OVERVIEW</h1>
+            <div className="flex flex-col gap-1.5 font-semibold text-sm">
+              <span>Next.js</span>
+              <span>TailwindCSS</span>
+              <span>Node.js</span>
+              <span>MongoDB</span>
+              <span>Docker - Kubernetes</span>
             </div>
           </div>
-          <div className="flex flex-col gap-7">
+          <div className="flex flex-col gap-5">
             <h1>INDUSTRY</h1>
-            <div className="flex w-[20rem] gap-6 flex-wrap">
+            <div className="flex gap-2 flex-wrap">
               <span className="py-1 px-1.5 border rounded-xl">#TECH</span>
               <span className="py-1 px-1.5 border rounded-xl">#WEBDEV</span>
               <span className="py-1 px-1.5 border rounded-xl">#FINTECH</span>
@@ -215,7 +215,7 @@ function Projects() {
 
 function MobileProject() {
   return (
-    <div className="md:hidden border-b border-black h-screen py-3 flex flex-col gap-5">
+    <div className="md:hidden h-screen py-3 flex flex-col gap-5">
       <h1 className="text-4xl">Js for Webflow</h1>
       <div className="h-[85vh] bg-purple-500 rounded-xl"></div>
     </div>

@@ -197,8 +197,8 @@ export default function Home() {
                 </motion.p>
               </div>
               <SkillComponent />
-              <Catch />
               <Projects />
+              <Catch />
             </div>
           </div>
           <section
