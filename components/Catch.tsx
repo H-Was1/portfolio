@@ -15,6 +15,9 @@ function Catch() {
   // Transform scroll progress to width percentage
   const { scrollYProgress } = useScroll();
   const width = useTransform(scrollYProgress, [0, 0.79], ["0vw", "94vw"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.75, 0.8], [0, 0.6, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.76, 0.8], [0, 0.1, 1]);
+
   // ------------------------
   const [isOpen, setIsOpen] = useState(false);
   const spring = {
@@ -59,7 +62,7 @@ function Catch() {
       ref={ref2}
     >
       <motion.div
-        style={{ width: width }}
+        style={{ width: width, opacity: opacity, scaleZ: scale }}
         className={`h-screen rounded-xl border border-transparent bg-white bg-grid invert flex items-center justify-end px-16 absolute max-3xl:left-[3.7%] left-[4%] overflow-hidden`}
       >
         <h1 className="absolute left-10 text-8xl xl:leading-[1.3] leading-[1] w-[55%] selection:bg-pink-400/50">

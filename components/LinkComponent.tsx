@@ -61,9 +61,10 @@ export function LinkComponent({
           initial={{ translateY: 5 }}
           animate={isHovering}
           variants={{ true: { height: childStyles, translateY: 0 } }}
+          transition={{ duration: 0.2 }}
           className={`absolute top-0 bg-black w-full ${childStyles} sm:hidden -z-10 rounded-xl`}
         ></motion.span>
-        <div className="flex relative max-md:text-sm justify-between border border-black gap-3 px-3 py-4 rounded-xl hover:px-8 transition-all duration-700">
+        <div className="flex relative max-md:text-sm justify-between border border-black gap-3 px-3 py-4 rounded-xl hover:px-8 transition-all duration-500">
           <span>{link.name}</span>
           <p>↗</p>
         </div>
