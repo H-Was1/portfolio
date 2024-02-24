@@ -12,7 +12,7 @@ const myFont2 = localFont({
 function SkillComponent() {
   // Transform scroll progress to width percentage
   const { scrollYProgress } = useScroll();
-  const width = useTransform(scrollYProgress, [0, 0.34], ["0px", "100%"]);
+  const width = useTransform(scrollYProgress, [0, 0.3], ["0px", "100%"]);
   // ------------------------
   return (
     <div
