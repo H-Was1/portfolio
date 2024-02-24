@@ -1,11 +1,21 @@
 import { email } from "@/constant";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import useMouse from "@react-hook/mouse-position";
 import { redirect } from "next/navigation";
 
 function Catch() {
+  // Transform scroll progress to width percentage
+  const { scrollYProgress } = useScroll();
+  const width = useTransform(scrollYProgress, [0, 0.79], ["0vw", "94vw"]);
+  // ------------------------
   const [isOpen, setIsOpen] = useState(false);
   const spring = {
     type: "spring",
@@ -48,7 +58,10 @@ function Catch() {
       id="catchme"
       ref={ref2}
     >
-      <div className="h-screen rounded-xl border border-transparent bg-white bg-grid invert w-[94vw] flex items-center justify-end px-16 absolute right-0 overflow-hidden">
+      <motion.div
+        style={{ width: width }}
+        className={`h-screen rounded-xl border border-transparent bg-white bg-grid invert flex items-center justify-end px-16 absolute max-3xl:left-[3.7%] left-[4%] overflow-hidden`}
+      >
         <h1 className="absolute left-10 text-8xl xl:leading-[1.3] leading-[1] w-[55%] selection:bg-pink-400/50">
           Excited to<span className="text-violet-800"> code</span>,
           <span className="text-emerald-300"> create</span>, and
@@ -80,7 +93,7 @@ function Catch() {
             Ping a message
           </Link>
         </motion.div>
-      </div>
+      </motion.div>
     </div>
   );
 }

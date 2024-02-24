@@ -51,7 +51,7 @@ export default function Home() {
       } else {
         controls.start("hidden");
       }
-      console.log(inView);
+      // console.log(inView);
     }, [controls, inView]);
     return [controls];
   };
@@ -197,8 +197,8 @@ export default function Home() {
                 </motion.p>
               </div>
               <SkillComponent />
-              <Catch />
               <Projects />
+              <Catch />
             </div>
           </div>
           <section
