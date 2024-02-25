@@ -47,12 +47,10 @@ export default function Home() {
   const ref = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
-  // const ref4 = useRef(null);
 
   const controls1 = useAnimation();
   const controls2 = useAnimation();
   const controls3 = useAnimation();
-  // const controls4 = useAnimation();
 
   const useInViewAnimation = (
     ref: any,
@@ -66,14 +64,12 @@ export default function Home() {
       } else {
         controls.start("hidden");
       }
-      // console.log(inView);
     }, [controls, inView]);
     return [controls];
   };
   useInViewAnimation(ref, "-200px", controls1);
   useInViewAnimation(ref2, "-250px", controls2);
   useInViewAnimation(ref3, "-350px", controls3);
-  // useInViewAnimation(ref4, "-350px", controls4);
 
   return (
     <ReactLenis root options={{ duration: 2.5 }}>

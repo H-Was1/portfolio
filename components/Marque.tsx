@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
 export function Marque() {
@@ -12,7 +12,6 @@ export function Marque() {
         repeat: Infinity,
         repeatDelay: -7,
         repeatType: "loop",
-        // type: "linear",
       }}
       className="flex gap-24 w-full select-none"
     >
@@ -56,8 +55,22 @@ export function Marque() {
 }
 
 export function SkillsMarque() {
+  const { scrollYProgress } = useScroll();
+  const height = useTransform(
+    scrollYProgress,
+    [0, 0.19, 0.23],
+    ["0px", "0px", "100%"]
+  );
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.19, 0.23],
+    ["0", "0", "100%"]
+  );
   return (
-    <div className="skill rounded-xl bg-black relative z-10">
+    <motion.div
+      className="skill rounded-xl bg-black relative z-10 top-0 transition-all ease-out duration-200"
+      style={{ height: height, opacity }}
+    >
       <motion.div
         initial={{ translateX: 0 }}
         animate={{ translateX: -6000, opacity: 1 }}
@@ -100,6 +113,6 @@ export function SkillsMarque() {
         <h1>Clerk</h1>
         <h1>CronJobs</h1>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
