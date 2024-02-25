@@ -9,7 +9,7 @@ import {
   useInView,
 } from "framer-motion";
 import { ReactLenis } from "@studio-freight/react-lenis";
-import { name, overview, pronouns, sections } from "@/constant";
+import { name, overview, pronouns } from "@/constant";
 import { Marque } from "@/components/Marque";
 import { LinkTree } from "@/components/LinkTree";
 import SkillComponent from "@/components/SkillComponent";
@@ -19,6 +19,21 @@ import Contact from "@/components/Contact";
 import Loading from "@/components/loading";
 
 export default function Home() {
+  // // scroll animations
+  const refabout = useRef<HTMLDivElement | null>(null);
+  const refskill = useRef<HTMLDivElement | null>(null);
+  const refproject = useRef<HTMLDivElement | null>(null);
+  const refcontact = useRef<HTMLDivElement | null>(null);
+  const sections = [
+    { ref: refabout, name: "About" },
+    { ref: refskill, name: "Skills" },
+    { ref: refproject, name: "Projects" },
+    { ref: refcontact, name: "Contact" },
+  ];
+  const clickHandler = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   //loading window
   const [isOpen, setisOpen] = useState(false);
   useEffect(() => {
@@ -127,7 +142,7 @@ export default function Home() {
           className="fixed w-screen z-30 bottom-5 flex justify-center max-md:hidden"
         >
           <div className="flex justify-center items-center w-screen">
-            <div className="backdrop-blur-2xl flex items-center justify-between w-[23rem] px-4 gap-8 border border-gray-400/20 rounded-xl py-[9px] bg-black/50">
+            <div className="backdrop-blur-2xl flex items-center justify-between w-[23rem] px-4 gap-8 border border-gray-400/20 rounded-xl py-[6px] bg-black/50">
               <Link href={"/"}>
                 <Image
                   draggable="false"
@@ -137,15 +152,16 @@ export default function Home() {
                   alt="logo"
                 ></Image>
               </Link>
-
               {sections.map((section) => (
-                <Link
-                  href={section.url}
-                  key={section.url}
+                <button
+                  onClick={() => {
+                    clickHandler(section.ref);
+                  }}
+                  key={section.name}
                   className="text-sm text-white"
                 >
                   {section.name}
-                </Link>
+                </button>
               ))}
             </div>
           </div>
@@ -155,9 +171,8 @@ export default function Home() {
             className="grid-static bg-slate-300/20  max-md:text-center flex flex-col  relative z-10  "
             ref={ref}
           >
-            <div className="middle-grid">
+            <div className="middle-grid" ref={refabout}>
               <div
-                id="about"
                 ref={ref3}
                 className="overflow-hidden h-full rounded-t-xl items-center justify-center py-4 flex flex-wrap bg-black gap-6 text-white w-full"
               >
@@ -196,8 +211,18 @@ export default function Home() {
                   {overview}
                 </motion.p>
               </div>
-              <SkillComponent />
-              <Projects />
+              <div
+                className="lg:deep-gridd deep-gridm grid-skills gap-4 h-[100vh] max-lg:h-[236vh] py-4 px-3 duration-1000 bg-gradient-to-bl from-violet-800/60 from-10% via-indigo-500/70 via-40% to-violet-700/60 to-95% relative overflow-hidden text-white"
+                ref={refskill}
+              >
+                <SkillComponent />
+              </div>
+              <div
+                className="grid-projects relative bg-slate-50 px-3 max-md:shadow-xl border-b border-b-black/40"
+                ref={refproject}
+              >
+                <Projects />
+              </div>
               <Catch />
             </div>
           </div>
@@ -205,9 +230,12 @@ export default function Home() {
             ref={ref}
             className="bg-slate-50 grid-footer sticky bottom-0 flex justify-center items-center px-6"
           >
-            <Contact />
+            <div className="flex flex-col gap-16">
+              <Contact />
+            </div>
           </section>
         </div>
+        <div ref={refcontact}></div>
       </main>
     </ReactLenis>
   );

@@ -32,7 +32,7 @@ function Project({
   path: webPath,
   id,
   previewUrl,
-}: Props): React.JSX.Element {
+}: Props) {
   const { ref, inView, entry } = useInViewr({
     onChange: () => {
       inView ? setIsOpen(id) : "";
@@ -108,106 +108,101 @@ function Projects() {
   return (
     <>
       <div
-        className="grid-projects relative bg-slate-50 px-3 max-md:shadow-xl border-b border-b-black/40"
-        id="projects"
+        className="sticky z-30 h-[21vh] top-0 border-b border-black"
+        ref={ref1}
       >
-        <div
-          className="sticky z-30 h-[21vh] top-0 border-b border-black"
-          ref={ref1}
-        >
-          <div className="bg-slate-50 flex justify-start gap-4 sm:text-7xl text-5xl font-bold items-center h-full">
-            <motion.span
-              initial={{ translateY: -40, opacity: 0 }}
-              animate={controls1}
-              variants={{
-                visible: { translateY: 0, opacity: 1 },
-                hidden: { translateY: -40, opacity: 0 },
-              }}
-              transition={{
-                delay: 0.1,
-                type: "spring",
-              }}
-            >
-              ⤵
-            </motion.span>
-            <motion.ul className="flex justify-center items-center">
-              {"Projects".split("").map((e, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ translateY: 40, opacity: 0 }}
-                  animate={controls1}
-                  variants={{
-                    visible: { translateY: 0, opacity: 1 },
-                    hidden: { translateY: 40, opacity: 0 },
-                  }}
-                  transition={{
-                    duration: 0.4,
-                    delay: 0.058 * i,
-                    type: "spring",
-                  }}
-                >
-                  {e}
-                </motion.li>
-              ))}
-            </motion.ul>
+        <div className="bg-slate-50 flex justify-start gap-4 sm:text-7xl text-5xl font-bold items-center h-full">
+          <motion.span
+            initial={{ translateY: -40, opacity: 0 }}
+            animate={controls1}
+            variants={{
+              visible: { translateY: 0, opacity: 1 },
+              hidden: { translateY: -40, opacity: 0 },
+            }}
+            transition={{
+              delay: 0.1,
+              type: "spring",
+            }}
+          >
+            ⤵
+          </motion.span>
+          <motion.ul className="flex justify-center items-center">
+            {"Projects".split("").map((e, i) => (
+              <motion.li
+                key={i}
+                initial={{ translateY: 40, opacity: 0 }}
+                animate={controls1}
+                variants={{
+                  visible: { translateY: 0, opacity: 1 },
+                  hidden: { translateY: 40, opacity: 0 },
+                }}
+                transition={{
+                  duration: 0.4,
+                  delay: 0.058 * i,
+                  type: "spring",
+                }}
+              >
+                {e}
+              </motion.li>
+            ))}
+          </motion.ul>
+        </div>
+      </div>
+      <div className="flex gap-28 w-full h-[20rem] pt-6 pb-3 max-md:hidden">
+        <div className="flex flex-col gap-5">
+          <h1>TIMEFRAME</h1>
+          <div className="flex gap-1.5 items-center justify-center flex-wrap  font-bold text-sm">
+            <span>YEAR</span>
+            <span>2023-24</span>
           </div>
         </div>
-        <div className="flex gap-28 w-full h-[20rem] pt-6 pb-3 max-md:hidden">
-          <div className="flex flex-col gap-5">
-            <h1>TIMEFRAME</h1>
-            <div className="flex gap-1.5 items-center justify-center flex-wrap  font-bold text-sm">
-              <span>YEAR</span>
-              <span>2023-24</span>
-            </div>
-          </div>
-          <div className="flex flex-col gap-5">
-            <h1>DISCIPLINE</h1>
-            <div className="flex flex-col gap-1.5 font-semibold text-sm">
-              <span>Full Stack Development</span>
-              <span>Data Scraping</span>
-              <span>Optimization & Scalability</span>
-              <span>Containerization</span>
-            </div>
-          </div>
-          <div className="flex flex-col gap-5">
-            <h1>OVERVIEW</h1>
-            <div className="flex flex-col gap-1.5 font-semibold text-sm">
-              <span>Next.js</span>
-              <span>TailwindCSS</span>
-              <span>Node.js</span>
-              <span>MongoDB</span>
-              <span>Docker - Kubernetes</span>
-            </div>
-          </div>
-          <div className="flex flex-col gap-5">
-            <h1>INDUSTRY</h1>
-            <div className="flex gap-2 flex-wrap">
-              <span className="py-1 px-1.5 border rounded-xl">#TECH</span>
-              <span className="py-1 px-1.5 border rounded-xl">#WEBDEV</span>
-              <span className="py-1 px-1.5 border rounded-xl">#FINTECH</span>
-              <span className="py-1 px-1.5 border rounded-xl">#MERN</span>
-              <span className="py-1 px-1.5 border rounded-xl">#CREATIVE</span>
-            </div>
+        <div className="flex flex-col gap-5">
+          <h1>DISCIPLINE</h1>
+          <div className="flex flex-col gap-1.5 font-semibold text-sm">
+            <span>Full Stack Development</span>
+            <span>Data Scraping</span>
+            <span>Optimization & Scalability</span>
+            <span>Containerization</span>
           </div>
         </div>
+        <div className="flex flex-col gap-5">
+          <h1>OVERVIEW</h1>
+          <div className="flex flex-col gap-1.5 font-semibold text-sm">
+            <span>Next.js</span>
+            <span>TailwindCSS</span>
+            <span>Node.js</span>
+            <span>MongoDB</span>
+            <span>Docker - Kubernetes</span>
+          </div>
+        </div>
+        <div className="flex flex-col gap-5">
+          <h1>INDUSTRY</h1>
+          <div className="flex gap-2 flex-wrap">
+            <span className="py-1 px-1.5 border rounded-xl">#TECH</span>
+            <span className="py-1 px-1.5 border rounded-xl">#WEBDEV</span>
+            <span className="py-1 px-1.5 border rounded-xl">#FINTECH</span>
+            <span className="py-1 px-1.5 border rounded-xl">#MERN</span>
+            <span className="py-1 px-1.5 border rounded-xl">#CREATIVE</span>
+          </div>
+        </div>
+      </div>
 
-        <div className="projects-container py-3">
-          {projects.map((project, id) => (
-            <Project
-              name={project.name} //
-              key={id}
-              id={(id + 1).toString()}
-              description={project.description} //
-              path={project.url}
-              isDeployed={project.isDeployed}
-              logoUrls={project.logoUrls}
-              previewUrl={project.previewUrl}
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-            />
-          ))}
-          <MobileProject />
-        </div>
+      <div className="projects-container py-3">
+        {projects.map((project, id) => (
+          <Project
+            name={project.name}
+            key={id}
+            id={(id + 1).toString()}
+            description={project.description} //
+            path={project.url}
+            isDeployed={project.isDeployed}
+            logoUrls={project.logoUrls}
+            previewUrl={project.previewUrl}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
+        ))}
+        <MobileProject />
       </div>
     </>
   );

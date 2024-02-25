@@ -110,12 +110,7 @@ export let projects = [
     id: 10,
   },
 ];
-export const sections = [
-  { url: "#about", name: "About" },
-  { url: "#skills", name: "Skills" },
-  { url: "#projects", name: "Projects" },
-  { url: "#contact", name: "Contact" },
-];
+
 export const info =
   "DIGITAL CRAFTSMAN, CRAFTING INNOVATIVE WEB EXPERIENCES WITH MERN";
 export const name = "Wasi ";

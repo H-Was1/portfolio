@@ -6,7 +6,7 @@ import Image from "next/image";
 
 function Contact() {
   return (
-    <div className="flex flex-col gap-16">
+    <>
       <span className="inline-block py-8 px-4 border-2 border-black rounded-xl select-none">
         <Image
           draggable="false"
@@ -56,7 +56,7 @@ function Contact() {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
