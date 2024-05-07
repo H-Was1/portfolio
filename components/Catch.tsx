@@ -14,9 +14,9 @@ import { redirect } from "next/navigation";
 function Catch() {
   // Transform scroll progress to width percentage
   const { scrollYProgress } = useScroll();
-  const width = useTransform(scrollYProgress, [0, 0.79], ["0vw", "94vw"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.75, 0.8], [0, 0.6, 1]);
-  const scale = useTransform(scrollYProgress, [0, 0.76, 0.8], [0, 0.1, 1]);
+  const width = useTransform(scrollYProgress, [0, 0.73], ["0vw", "94vw"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.72, 0.73], [0, 0.6, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.76, 0.73], [0, 0.1, 1]);
 
   // ------------------------
   const [isOpen, setIsOpen] = useState(false);

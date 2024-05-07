@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useInView as useInViewr } from "react-intersection-observer";
 import {
   AnimationControls,
@@ -8,15 +8,14 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { projects } from "@/constant";
+import { previews, projects } from "@/constant";
+import HeroCarousel from "./Carousel";
 
 interface Props {
   name: string;
+  url: string;
   description: string;
   isDeployed: boolean;
-  logoUrls: string[];
-  previewUrl: string;
-  path: string;
   id: string;
   isOpen: string;
   setIsOpen: React.Dispatch<React.SetStateAction<string>>;
@@ -26,12 +25,10 @@ function Project({
   name,
   description,
   isDeployed,
-  logoUrls,
+  url,
   isOpen,
   setIsOpen,
-  path: webPath,
   id,
-  previewUrl,
 }: Props) {
   const { ref, inView, entry } = useInViewr({
     onChange: () => {
@@ -47,36 +44,22 @@ function Project({
     >
       <div className="flex items-center justify-center gap-3" id={id} ref={ref}>
         <span className="flex gap-3">
-          {logoUrls.length >= 1 ? (
-            logoUrls.map((logoUrl) => (
-              <Image
-                data-state={isOpen === id ? "open" : "closed"}
-                src={logoUrl}
-                width={35}
-                height={20}
-                alt={logoUrl}
-                key={logoUrl}
-                className="data-[state=open]:invert"
-              ></Image>
-            ))
-          ) : (
-            <Image src={logoUrls[0]} width={35} height={20} alt="logo"></Image>
-          )}
+          <Image
+            src={"/data.svg"}
+            width={35}
+            height={20}
+            alt="logo"
+            data-state={isOpen === id ? "open" : "closed"}
+            className="data-[state=open]:invert"
+          ></Image>
         </span>
         <p className="text-xl border-l-2 pl-3 border-black">{name}</p>
         <p className="max-xl:hidden">{description}</p>
       </div>
-      <div
-        className={`absolute ${
-          id === "1" || id === "2" ? "-top-28" : "bottom-4"
-        } z-[1] data-[state=closed]:hidden w-full h-[16rem] grid grid-cols-12`}
-        data-state={isOpen === id ? "open" : "closed"}
-      >
-        <span className="w-[18rem] bg-slate-300/20 backdrop-blur-lg h-full rounded-xl 3xl:col-start-6 3xl:col-end-7 col-start-5 col-end-6"></span>
-      </div>
+
       <Link
         target="_blank"
-        href={webPath}
+        href={url}
         className="shadow-md border border-black rounded-xl w-[10.3rem] py-2 text-sm bg-slate-100/90 text-black flex items-center justify-center gap-2"
       >
         <Image src={"/frontend.svg"} width={20} height={20} alt="logo"></Image>
@@ -87,7 +70,11 @@ function Project({
 }
 function Projects() {
   const ref1 = useRef(null);
-  const [isOpen, setIsOpen] = useState("");
+  const [isOpen, setIsOpen] = useState<string>("1");
+  const [Current, setCurrent] = useState<number>(0);
+  useEffect(() => {
+    setCurrent(+isOpen && +isOpen - 1);
+  }, [isOpen]);
   const controls1 = useAnimation();
   const useInViewAnimation = (
     ref: any,
@@ -102,8 +89,11 @@ function Projects() {
         controls.start("hidden");
       }
     }, [controls, inView]);
+
     return [controls];
   };
+  console.log(Current);
+
   useInViewAnimation(ref1, "-40px", controls1);
   return (
     <>
@@ -188,16 +178,26 @@ function Projects() {
       </div>
 
       <div className="projects-container py-3">
+        <div
+          className={`z-10 left-0 bottom-0 w-[75%] h-[65%] grid grid-cols-12 absolute `}
+        >
+          <span className="md:w-[25rem] w-[20rem] bg-slate-300/20 backdrop-blur-lg h-72 rounded-xl 3xl:col-start-7 3xl:col-end-8 col-start-6 col-end-7 sticky top-48 shadow-lg">
+            <Image
+              src={previews[Current]}
+              fill
+              alt="project"
+              className="rounded-xl"
+            ></Image>
+          </span>
+        </div>
         {projects.map((project, id) => (
           <Project
             name={project.name}
             key={id}
             id={(id + 1).toString()}
             description={project.description} //
-            path={project.url}
+            url={project.url}
             isDeployed={project.isDeployed}
-            logoUrls={project.logoUrls}
-            previewUrl={project.previewUrl}
             isOpen={isOpen}
             setIsOpen={setIsOpen}
           />
@@ -210,9 +210,10 @@ function Projects() {
 
 function MobileProject() {
   return (
-    <div className="md:hidden h-screen py-3 flex flex-col gap-5">
-      <h1 className="text-4xl">Js for Webflow</h1>
-      <div className="h-[85vh] bg-purple-500 rounded-xl"></div>
+    <div className="md:hidden py-3 flex flex-col gap-5">
+      <div className="h-[60dvh] rounded-xl">
+        <HeroCarousel />
+      </div>
     </div>
   );
 }
