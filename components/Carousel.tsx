@@ -3,11 +3,12 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
-import { projects } from "@/constant";
+import { previews, projects } from "@/constant";
+import Link from "next/link";
 
 const HeroCarousel = () => {
   return (
-    <div className="hero-carousel h-full bg-slate-300">
+    <div className="hero-carousel h-fit py-8">
       <Carousel
         showThumbs={false}
         autoPlay
@@ -17,15 +18,16 @@ const HeroCarousel = () => {
         showStatus={false}
         className="h-full"
       >
-        {projects.map((image) => (
-          <Image
-            src={"/pexels-pacific-3783385.jpg"}
-            alt="null"
-            width={484}
-            height={904}
-            className="object-cover"
-            key={image.alt}
-          />
+        {projects.map((project, i) => (
+          <Link href={project.url} key={project.name}>
+            <Image
+              src={previews[i]}
+              alt="null"
+              width={484}
+              height={14}
+              className="object-cover"
+            />
+          </Link>
         ))}
       </Carousel>
       <Image

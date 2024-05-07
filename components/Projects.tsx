@@ -92,7 +92,6 @@ function Projects() {
 
     return [controls];
   };
-  console.log(Current);
 
   useInViewAnimation(ref1, "-40px", controls1);
   return (
@@ -179,7 +178,7 @@ function Projects() {
 
       <div className="projects-container py-3">
         <div
-          className={`z-10 left-0 bottom-0 w-[75%] h-[65%] grid grid-cols-12 absolute `}
+          className={`z-10 left-0 bottom-0 w-[75%] h-[65%] grid grid-cols-12 absolute max-md:hidden`}
         >
           <span className="md:w-[25rem] w-[20rem] bg-slate-300/20 backdrop-blur-lg h-72 rounded-xl 3xl:col-start-7 3xl:col-end-8 col-start-6 col-end-7 sticky top-48 shadow-lg">
             <Image
@@ -211,7 +210,7 @@ function Projects() {
 function MobileProject() {
   return (
     <div className="md:hidden py-3 flex flex-col gap-5">
-      <div className="h-[60dvh] rounded-xl">
+      <div className="h-[80dvh] rounded-xl">
         <HeroCarousel />
       </div>
     </div>
