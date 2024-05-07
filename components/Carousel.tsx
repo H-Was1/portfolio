@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const HeroCarousel = () => {
   return (
-    <div className="hero-carousel h-fit py-8">
+    <div className="hero-carousel py-8">
       <Carousel
         showThumbs={false}
         autoPlay

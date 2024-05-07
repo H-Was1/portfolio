@@ -209,8 +209,8 @@ function Projects() {
 
 function MobileProject() {
   return (
-    <div className="md:hidden py-3 flex flex-col gap-5">
-      <div className="h-[80dvh] rounded-xl">
+    <div className="md:hidden pt-16">
+      <div className="rounded-xl">
         <HeroCarousel />
       </div>
     </div>
