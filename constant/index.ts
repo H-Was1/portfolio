@@ -60,7 +60,7 @@ export const previews = [
   "/portfolio-p.png",
 ];
 export const info =
-  "DIGITAL CRAFTSMAN, CRAFTING INNOVATIVE WEB EXPERIENCES WITH MERN";
+  "DIGITAL CRAFTSMAN, CRAFTING INNOVATIVE WEB & CROSS-PLATFORM EXPERIENCES USING MODERN STACKS";
 export const name = "Wasi ";
 export const pronouns = "(He/Him)";
 export const overview =
