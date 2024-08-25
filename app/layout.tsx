@@ -10,7 +10,7 @@ const myFont = localFont({
 export const metadata: Metadata = {
   title: "Portfolio | Hammad Wasi",
   description:
-    "Wasi is a seasoned Fullstack Engineer, excels in diverse tech stacks and containerization. His expertise enables him to create robust, scalable systems and his proficiency in cloud technologies leads to unparalleled digital solutions. His tech prowess and creativity ignite innovation. Curious about his skillset?",
+    "As a seasoned Full-Stack Developer, I have a passion for creating exceptional applications. I specialize in React and Next.js, engineering high-quality solutions that enhance user experiences. My versatile skill set includes Docker, AWS, and Kubernetes. I'm eager to join your team and bring my skills and creativity to your projects.",
 };
 
 export default function RootLayout({
