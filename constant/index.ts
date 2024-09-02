@@ -59,7 +59,7 @@ export let projects = [
     id: 1,
   },
   {
-    name: "Fitness app",
+    name: "Fitness app Design",
     description:
       "A proffessional Fitness appwith AI recommendations for nutritions and excercise",
     url: "https://www.figma.com/design/ygQSIWx6NKxFdrTn2RSHQC/Lifting-Iron-Mobile-App?node-id=0-1&node-type=CANVAS",
@@ -67,7 +67,7 @@ export let projects = [
     id: 1,
   },
   {
-    name: "LHfadez Barbering",
+    name: "LHfadez Barbering Design",
     description: "A proffessional Barber booking app",
     url: "https://www.figma.com/design/TxiLlI5lDo7fDtxRqIpe3e/Barber-Admin-Dashboard-(Copy)?node-id=373-2876&node-type=CANVAS",
     isDeployed: true,
