@@ -50,6 +50,29 @@ export let projects = [
     url: "/",
     isDeployed: true,
   },
+  {
+    name: "Sports App Design",
+    description:
+      "A proffessional sports app with ground, coach bookings and subscriptions",
+    url: "https://www.figma.com/design/8TFAstkZTyMy1tyqQD0F41/Untitled?node-id=0-1&node-type=CANVAS",
+    isDeployed: true,
+    id: 1,
+  },
+  {
+    name: "Fitness app",
+    description:
+      "A proffessional Fitness appwith AI recommendations for nutritions and excercise",
+    url: "https://www.figma.com/design/ygQSIWx6NKxFdrTn2RSHQC/Lifting-Iron-Mobile-App?node-id=0-1&node-type=CANVAS",
+    isDeployed: true,
+    id: 1,
+  },
+  {
+    name: "LHfadez Barbering",
+    description: "A proffessional Barber booking app",
+    url: "https://www.figma.com/design/TxiLlI5lDo7fDtxRqIpe3e/Barber-Admin-Dashboard-(Copy)?node-id=373-2876&node-type=CANVAS",
+    isDeployed: true,
+    id: 1,
+  },
 ];
 export const previews = [
   "/messenger-p.png",
@@ -58,6 +81,9 @@ export const previews = [
   "/price-p.png",
   "/lms-p.png",
   "/portfolio-p.png",
+  "/sports.png",
+  "/fitness.png",
+  "/barbering.png",
 ];
 export const info =
   "DIGITAL CRAFTSMAN, CRAFTING INNOVATIVE WEB & CROSS-PLATFORM EXPERIENCES USING MODERN STACKS";

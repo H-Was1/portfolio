@@ -19,7 +19,6 @@ import Contact from "@/components/Contact";
 import Loading from "@/components/loading";
 
 export default function Home() {
-  // // scroll animations
   const refabout = useRef<HTMLDivElement | null>(null);
   const refskill = useRef<HTMLDivElement | null>(null);
   const refproject = useRef<HTMLDivElement | null>(null);
@@ -34,7 +33,6 @@ export default function Home() {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  //loading window
   const [isOpen, setisOpen] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -43,7 +41,6 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, [isOpen]);
 
-  //in View animation
   const ref = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
@@ -93,7 +90,8 @@ export default function Home() {
               width={880}
               height={900}
               alt="hero"
-            ></Image>
+              loading="lazy"
+            />
             <div className="justify-between gap-3 items-center absolute max-sm:hidden max-md:bottom-36 bottom-7 left-5 flex">
               <div className="border px-[.6rem] py-2 border-black rounded-xl flex justify-center">
                 <motion.p
@@ -116,7 +114,8 @@ export default function Home() {
                     width={16}
                     height={60}
                     alt="logo"
-                  ></Image>
+                    loading="lazy"
+                  />
                 </motion.p>
               </div>
               <span className="text-md">Scroll down</span>
@@ -146,7 +145,7 @@ export default function Home() {
                   width={50}
                   height={60}
                   alt="logo"
-                ></Image>
+                />
               </Link>
               {sections.map((section) => (
                 <button

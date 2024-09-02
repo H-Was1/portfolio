@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useInView as useInViewr } from "react-intersection-observer";
 import {
   AnimationControls,
@@ -30,13 +30,14 @@ function Project({
   setIsOpen,
   id,
 }: Props) {
-  const { ref, inView, entry } = useInViewr({
+  const { ref, inView } = useInViewr({
     onChange: () => {
-      inView ? setIsOpen(id) : "";
+      if (inView) setIsOpen(id);
     },
     threshold: 0,
     rootMargin: "-600px 0px -700px 0px",
   });
+
   return (
     <motion.div
       data-state={isOpen === id ? "open" : "closed"}
@@ -51,7 +52,8 @@ function Project({
             alt="logo"
             data-state={isOpen === id ? "open" : "closed"}
             className="data-[state=open]:invert"
-          ></Image>
+            loading="lazy"
+          />
         </span>
         <p className="text-xl border-l-2 pl-3 border-black">{name}</p>
         <p className="max-xl:hidden">{description}</p>
@@ -62,19 +64,28 @@ function Project({
         href={url}
         className="shadow-md border border-black rounded-xl w-[10.3rem] py-2 text-sm bg-slate-100/90 text-black flex items-center justify-center gap-2"
       >
-        <Image src={"/frontend.svg"} width={20} height={20} alt="logo"></Image>
+        <Image
+          src={"/frontend.svg"}
+          width={20}
+          height={20}
+          alt="logo"
+          loading="lazy"
+        />
         {isDeployed ? "Explore the Website!" : "Explore the Code!"}
       </Link>
     </motion.div>
   );
 }
+
 function Projects() {
   const ref1 = useRef(null);
   const [isOpen, setIsOpen] = useState<string>("1");
   const [Current, setCurrent] = useState<number>(0);
+
   useEffect(() => {
-    setCurrent(+isOpen && +isOpen - 1);
+    setCurrent(Number(isOpen) - 1);
   }, [isOpen]);
+
   const controls1 = useAnimation();
   const useInViewAnimation = (
     ref: any,
@@ -94,6 +105,7 @@ function Projects() {
   };
 
   useInViewAnimation(ref1, "-40px", controls1);
+
   return (
     <>
       <div
@@ -186,15 +198,16 @@ function Projects() {
               fill
               alt="project"
               className="rounded-xl"
-            ></Image>
+              loading="lazy"
+            />
           </span>
         </div>
         {projects.map((project, id) => (
           <Project
             name={project.name}
-            key={id}
+            key={project.id} // Ensure `project.id` is unique
             id={(id + 1).toString()}
-            description={project.description} //
+            description={project.description}
             url={project.url}
             isDeployed={project.isDeployed}
             isOpen={isOpen}
