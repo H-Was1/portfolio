@@ -90,7 +90,7 @@ export const info =
 export const name = "Wasi ";
 export const pronouns = "(He/Him)";
 export const overview =
-  " a seasoned Fullstack Engineer, excels in diverse tech stacks and containerization. His expertise enables him to create robust, scalable systems and his proficiency in cloud technologies leads to unparalleled digital solutions. His tech prowess and creativity ignite innovation. Curious about his skillset?";
+  " a seasoned Fullstack Engineer & UI/UX designer, excels in diverse tech stacks and containerization. His expertise enables him to create robust, scalable systems and his proficiency in cloud technologies leads to unparalleled digital solutions. His tech prowess and creativity ignite innovation. Curious about his skillset?";
 
 const skillIcons = [
   {

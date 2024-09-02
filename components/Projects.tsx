@@ -184,6 +184,7 @@ function Projects() {
             <span className="py-1 px-1.5 border rounded-xl">#FINTECH</span>
             <span className="py-1 px-1.5 border rounded-xl">#MERN</span>
             <span className="py-1 px-1.5 border rounded-xl">#CREATIVE</span>
+            <span className="py-1 px-1.5 border rounded-xl">#UI/UX</span>
           </div>
         </div>
       </div>
