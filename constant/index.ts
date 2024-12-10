@@ -1,6 +1,6 @@
 export const links = [
   {
-    url: "https://www.linkedin.com/in/hammad-wasi-17a3b12b6/",
+    url: "https://www.linkedin.com/in/wasi-codes/",
     name: "LinkedIn",
   },
   { url: "mailto:hammadwasi.b@gmail.com", name: "Email" },
