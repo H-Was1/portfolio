@@ -5,7 +5,7 @@ export const links = [
   },
   { url: "mailto:hammadwasi.b@gmail.com", name: "Email" },
   { url: "https://github.com/H-Was1", name: "Github" },
-  { url: "/hammad_wasi_resume.docx", name: "Resume / CV" },
+  { url: "/Hammad_Wasi_Resume.pdf", name: "Resume / CV" },
 ];
 export const email = "hammadwasi.b@gmail.com";
 export let projects = [
